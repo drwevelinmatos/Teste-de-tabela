@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PueriCalc - Dr. Wevelin</title>
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Gotham Book', 'Comfortaa', Arial, sans-serif;
+      padding: 20px;
+      background: rgb(255,255,255);
+      color: #2c3e50;
+    }
+    header { text-align: center; margin-bottom: 30px; }
+    header img { max-width: 100px; }
+    h1, h2, h3 {
+      color: rgb(40,90,129);
+      font-family: 'Comfortaa', Arial, sans-serif;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-family: 'Gotham Book', Arial, sans-serif;
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+      color: rgb(40,90,129);
+    }
+    input, select {
+      font-family: 'Gotham Book', 'Comfortaa', Arial, sans-serif;
+      padding: 10px; width: 100%; margin-top: 5px;
+      border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box;
+      background: rgb(185,224,229);
+      color: #2c3e50;
+    }
+    button {
+      margin-top: 20px; padding: 12px; width: 100%;
+      background: rgb(40,90,129);
+      color: white; font-size: 16px;
+      font-family: 'Comfortaa', Arial, sans-serif;
+      border: none; border-radius: 6px; cursor: pointer;
+      box-shadow: 0 2px 4px rgba(40,90,129,0.1);
+    }
+    button:hover { background: rgb(185,224,229); color: rgb(40,90,129);}
+    .resultado, .result {
+      margin-top: 25px; padding: 15px 10px;
+      background: #fff; border-radius: 7px; border: 1px solid #ccc;
+      font-family: 'Gotham Book', 'Comfortaa', Arial, sans-serif;
+      white-space: pre-line;
+    }
+    .destaque {
+      font-weight: bold; color: rgb(40,90,129); font-family: 'Comfortaa', Arial, sans-serif;
+    }
+    footer {
+      margin-top: 40px; font-size: 12px;
+      text-align: center; color: #555; border-top: 1px solid #ccc; padding-top: 15px;
+      font-family: 'Comfortaa', Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="IMG_4625.png" alt="Logo Dr. Wevelin Matos" />
+</header>
+<style>
+#ictericia-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  font-family: 'Gotham Book', 'Comfortaa', Arial, sans-serif;
+}
+#ictericia-formulario {
+  flex: 0 1 320px;
+  background: rgb(255,255,255);
+  padding: 24px 20px;
+  border-radius: 10px;
+  color: rgb(40,90,129);
+  box-shadow: 0 2px 8px #0002;
+  label {
+      font-family: 'Gotham Book', Arial, sans-serif;
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+      color: rgb(40,90,129);
+  }
+  input, select {
+      font-family: 'Gotham Book', 'Comfortaa', Arial, sans-serif;
+      padding: 10px; width: 100%; margin-top: 5px;
+      border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box;
+      background: rgb(185,224,229);
+      color: #2c3e50;
+  }
+}
+#ictericia-tabelas {
+  flex: 1 1 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.ictericia-tabela {
+  background: rgb(185,224,229);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 18px 14px 10px 14px;
+  margin-bottom: 0;
+}
+.ictericia-tabela table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8em;
+  background: none;
+}
+.ictericia-tabela th,
+.ictericia-tabela td {
+  border: 1px solid rgb(40,90,129);
+  padding: 6px 10px;
+  text-align: center;
+}
+.ictericia-tabela thead th {
+  background: rgb(40,90,129);
+  color: rgb(255,255,255);
+  font-weight: bold;
+}
+.ictericia-tabela tbody tr:nth-child(even) {
+  background: rgb(255,255,255);
+}
+.ictericia-tabela tbody tr:nth-child(odd) {
+  background: rgb(185,224,229);
+}
+.ictericia-tabela ul {
+  font-size: 0.8em;
+  margin: 12px 0 2px 10px;
+  padding-left: 20px;
+  color: rgb(40,90,129);
+}
+.ictericia-tabela li {
+  margin-bottom: 5px;
+}
+  
+</style>
+<h2>Indicação de Fototerapia e Exsanguineotransfusão</h2>
+<section id="ictericia-layout">
+    <div id="ictericia-formulario">
+    <label for="idade-gestacional-bilirrubina">Idade Gestacional (semanas):</label>
+    <input type="number" id="idade-gestacional-bilirrubina" min="22" max="42" /><br /><br />
+    <label for="peso-nasc-ictericia">Peso ao nascer (g):</label>
+    <input type="number" id="peso-nasc-ictericia" min="400" max="6000" /><br /><br />
+    <label for="horas-vida">Idade pós-natal (horas):</label>
+    <input type="number" id="horas-vida" min="0" max="168" /><br /><br />
+    <label for="bilirrubina-total">Bilirrubina Total (mg/dL):</label>
+    <input type="number" id="bilirrubina-total" step="0.1" min="0" max="50" /><br /><br />
+    <label for="fatores-risco">Fatores de risco (doença hemolítica, asfixia, etc):</label>
+    <select id="fatores-risco">
+      <option value="nao">Não</option>
+      <option value="sim">Sim</option>
+    </select>
+    <button type="button"
+     onclick="indicaTratamentoIctericia()">Verificar indicação</button>
+    <div class="result" id="resultado-ictericia"></div>
+  </div>
+
+  <div id="ictericia-tabelas">
+    <div class="ictericia-tabela">
+<table>
+<thead>
+<tr>
+<th rowspan=”3”>Velocidade de Crescimento - Estatura</th>
+</tr>
+<tr>
+<th>Idade</th>
+<th>Observação</th>
+<th>Velocidade</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>0 - 6 meses</td><td>15 cm</td><td>30 cm/ano</td></tr>
+<tr><td>6 - 12 meses</td><td>10 cm</td><td>20 cm/ano</td></tr>
+<tr><td>1 - 2 anos</td><td> </td><td>10 cm/ano</td></tr>
+<tr><td>2 anos - Puberdade</td><td> </td><td>5 - 7 cm/ano</td></tr>
+<tr><td  rowspan=”2”>Puberdade</td><td>Meninas</td>9 cm/ano<td>Meninos</td><td>10 cm/ano</td></tr>
+</tbody>
+</table>
+<script>
+function indicaTratamentoIctericia() {
+  const ig = parseInt(document.getElementById('idade-gestacional-bilirrubina').value);
+  const horas = parseInt(document.getElementById('horas-vida').value);
+  const bilirrubina = parseFloat(document.getElementById('bilirrubina-total').value);
+  const pesoNasc = parseFloat(document.getElementById('peso-nasc-ictericia').value);
+  const risco = document.getElementById('fatores-risco').value === 'sim';
+
+  if (
+    isNaN(ig) || isNaN(horas) || isNaN(bilirrubina) ||
+    (ig < 34 && (isNaN(pesoNasc) || pesoNasc <= 0))
+  ) {
+    alert('Preencha todos os campos corretamente, especialmente o peso ao nascer para IG < 34 semanas.');
+    return;
+  }
+
+  let indicacao = 'Sem indicação de tratamento.';
+
+  if (ig < 34) {
+    const tabelaPeso = [
+      { min: 0, max: 1500, fotoMin: 6, fotoMax: 8, exsangMin: 11, exsangMax: 13 },
+      { min: 1501, max: 2000, fotoMin: 8, fotoMax: 10, exsangMin: 13, exsangMax: 15 },
+      { min: 2001, max: 2500, fotoMin: 10, fotoMax: 12, exsangMin: 15, exsangMax: 17 },
+      { min: 2501, max: Infinity, fotoMin: 12, fotoMax: 14, exsangMin: 17, exsangMax: 19 }
+    ];
+    const catPeso = tabelaPeso.find(cat => pesoNasc >= cat.min && pesoNasc <= cat.max);
+    if (catPeso) {
+      if (bilirrubina >= catPeso.exsangMin) {
+        indicacao = 'Indicação de Exsanguineotransfusão';
+      } else if (bilirrubina >= catPeso.fotoMin) {
+        indicacao = 'Indicação de Fototerapia';
+      }
+    }
+  } else {
+    const tabelaIdade = [
+      { horasMin: 0, horasMax: 24, foto: { semRisco: 12, comRisco: 8 }, exsang: { semRisco: 16, comRisco: 12 } },
+      { horasMin: 25, horasMax: 36, foto: { semRisco: 14, comRisco: 10 }, exsang: { semRisco: 18, comRisco: 14 } },
+      { horasMin: 37, horasMax: 48, foto: { semRisco: 16, comRisco: 12 }, exsang: { semRisco: 20, comRisco: 16 } },
+      { horasMin: 49, horasMax: 72, foto: { semRisco: 18, comRisco: 14 }, exsang: { semRisco: 22, comRisco: 18 } },
+      { horasMin: 73, horasMax: 96, foto: { semRisco: 20, comRisco: 16 }, exsang: { semRisco: 24, comRisco: 20 } },
+      { horasMin: 97, horasMax: 168, foto: { semRisco: 22, comRisco: 18 }, exsang: { semRisco: 26, comRisco: 22 } }
+    ];
+    let faixa = tabelaIdade.find(f => horas >= f.horasMin && horas <= f.horasMax);
+    if (faixa) {
+      const fotoLimite = risco ? faixa.foto.comRisco : faixa.foto.semRisco;
+      const exsangLimite = risco ? faixa.exsang.comRisco : faixa.exsang.semRisco;
+      if (bilirrubina >= exsangLimite) {
+        indicacao = 'Indicação de Exsanguineotransfusão';
+      } else if (bilirrubina >= fotoLimite) {
+        indicacao = 'Indicação de Fototerapia';
+      }
+    }
+  }
+  if (risco && indicacao === 'Sem indicação de tratamento.' && bilirrubina >= 12) {
+    indicacao = 'Observação reforçada (Fatores de risco presentes)';
+  }
+  document.getElementById('resultado-ictericia').textContent = indicacao;
+}
+</script>
+
+</body>
+</html>
